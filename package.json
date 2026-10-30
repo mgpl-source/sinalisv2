@@ -1,0 +1,1 @@
+{"name":"sinalisv2","version":"1.0.0","private":true,"description":"Protótipo Sinalis com React e TypeScript","scripts":{"build":"tsc -p tsconfig.json","dev":"python3 -m http.server 5173"},"devDependencies":{"typescript":"^5.9.3"},"license":"UNLICENSED"}
