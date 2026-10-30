@@ -1,4 +1,16 @@
 {
- "compilerOptions": {"target":"ES2019","lib":["DOM","ES2019"],"module":"none","jsx":"react","strict":false,"skipLibCheck":true,"noEmitOnError":true,"outFile":"app.js"},
- "files":["src/react-shim.d.ts","src/app.tsx"]
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": true,
+    "esModuleInterop": true
+  },
+  "include": ["src", "vite.config.ts"]
 }

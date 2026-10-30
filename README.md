@@ -1,60 +1,57 @@
-# Sinalis V2 — produto demonstrativo em React + TypeScript
+# Sinalis V2 · Educação que conecta
 
-Esta versão é uma aplicação navegável de verdade, não uma colagem de telas nem áreas clicáveis por coordenada. Inspirada nas 30 referências do fluxo iPhone 14 fornecido pela equipe, usa componentes HTML/CSS reais, React e TypeScript.
+Protótipo navegável reconstruído em **React 19 + TypeScript estrito + Vite**, a partir da direção visual corporativa aprovada. Layout responsivo, com referência mobile de **390 × 844 CSS px (iPhone 14)**.
 
-## O que funciona
+## Explorar
 
-- Iniciar a demonstração **sem cadastro, senha ou login**, escolhendo o perfil Pessoa surda, Pessoa ouvinte ou Educador(a).
-- Menus, trilhas, aulas, atividades de múltipla escolha e feedback imediato.
-- Conclusão de aulas, barras de progresso e histórico local.
-- Vocabulário com busca/filtros e favoritos.
-- Comunidade de demonstração com publicações, curtidas e respostas.
-- Chat demonstrativo de texto (sem outro participante).
-- Educador: criação e publicação local de atividades, relatório ilustrativo de turmas e biblioteca com filtros.
-- Preferências de acessibilidade: fonte maior, alto contraste, movimento reduzido, transcrições.
-- Notificações, FAQ, preferências e limpeza de dados da demo.
-- Layout responsivo, mobile-first (incluindo iPhone 14) e desktop com barra lateral.
+Abra o site e escolha **Adulto surdo**, **Ouvinte** ou **Professor**. Não é necessário cadastrar nome, e-mail ou senha. O perfil pode ser trocado pelo menu ou em Meu perfil.
 
-## Limitações informadas na interface
+- **Adulto surdo e ouvinte:** trilhas, aulas guiadas, exercícios com feedback e desbloqueio sequencial, apoio bilíngue com busca, favoritos, leitura e cultura, carreira, inclusão e progresso.
+- **Professor:** visão geral, turmas fictícias, busca de participantes, devolutivas locais, relatório CSV, criação/edição de atividades e rascunhos, biblioteca com filtros e comunidade docente.
+- **Comuns:** comunicação por texto de demonstração, publicações/comentários/curtidas locais, notificações com leitura, edição de perfil, preferências de acessibilidade, FAQ, registro local de solicitação, exportação e exclusão de dados.
 
-A aplicação **não tem backend, contas, senhas ou serviços externos**. Todas as modificações são guardadas em `localStorage` do navegador. Fotos são elementos de ilustração. Vídeos de Libras, gravação de áudio/vídeo, upload, relatórios reais e conteúdo pedagógico validado não são simulados como se estivessem funcionando: a interface informa expressamente quando são conteúdos ilustrativos. Os usuários e métricas de turmas são fictícios.
+A trilha sinuosa mostra etapas concluídas, atual e bloqueadas. Uma resposta correta conclui a aula e libera a seguinte; respostas incorretas permitem tentar novamente. O progresso continua após recarregar a página.
 
-## Estrutura
+## Executar e verificar
 
-- `src/app.tsx`: componentes e lógica React + TypeScript.
-- `src/react-shim.d.ts`: definições mínimas para TypeScript usar UMD React.
-- `styles.css`: interface responsiva.
-- `index.html`: entrada do site.
-- `app.js`: JavaScript compilado do `src/app.tsx`.
-- `assets/`: imagens recortadas das referências fornecidas (não são screenshots de tela completa).
-- `vendor/`: distribuição UMD de React 16 e ReactDOM 16, incluída para GitHub Pages funcionar sem CDNs; licenciada sob MIT.
-- `.nojekyll`: evita processamento Jekyll do site estático.
-
-## Executar
-
-O ZIP está pronto para abrir em um servidor estático local ou enviar ao GitHub Pages, sem npm install.
+Requisitos: Node.js 20.19+ ou 22.12+ e npm.
 
 ```bash
-python3 -m http.server 5173
-```
-
-Abra `http://localhost:5173/`.
-
-Para editar o TypeScript e recompilar:
-
-```bash
-npm install
+npm ci
+npm run dev
+npm test
 npm run build
 ```
 
-Ou execute `tsc -p tsconfig.json` caso tenha TypeScript instalado globalmente.
+`npm run build` verifica o TypeScript, cria `dist/` e atualiza os arquivos estáticos na raiz para o GitHub Pages. `src/index.html` é a entrada de desenvolvimento; `index.html`, `assets/`, `media/` e `fonts/` na raiz são a distribuição compilada e devem ser atualizados pelo build.
 
-### GitHub Pages
+## Publicação
 
-No repositório `mgpl-source/sinalisv2`, use **Settings → Pages → Deploy from a branch → main / (root)**. O endereço esperado é <https://mgpl-source.github.io/sinalisv2/>.
+Compatível com GitHub Pages em **main / (root)**. O build usa caminhos relativos e rotas hash, permitindo recarregar e compartilhar telas dentro de `/sinalisv2/` sem erro 404. Não é necessário build no GitHub para servir os arquivos desta branch.
 
-A aplicação usa caminhos relativos em todos os arquivos, compatíveis com o subdiretório `/sinalisv2/`.
+## Organização
 
-## Créditos e imagens
+- `src/App.tsx`: estrutura, rotas, navegação e diálogos acessíveis.
+- `src/Account.tsx`: entrada, perfis, preferências, segurança e suporte.
+- `src/Learning.tsx`: trilhas, aulas, exercícios, progresso e conteúdos.
+- `src/Teaching.tsx`: ferramentas do professor.
+- `src/Community.tsx`: comunidade e conversa de demonstração.
+- `src/model.ts`: tipos, persistência, rotas e regras de progressão.
+- `src/data.ts`: conteúdos e dados de exemplo.
+- `src/ui.tsx` e `src/styles.css`: componentes, tokens visuais e responsividade.
+- `src/app.test.tsx`: testes de regras, fluxos e rotas.
+- `public/`: imagens e fontes locais; `scripts/prepare-pages.mjs`: distribuição estática.
 
-As fotografias e a arte do mascote foram recortadas a partir do fluxo visual fornecido pela equipe Sinalis. Os arquivos de React e ReactDOM distribuídos em `vendor/` são software de terceiros, sob licença MIT. O código da demo não exige servidores nem dados pessoais.
+## Identidade e acessibilidade
+
+Paleta: marrom `#5B2E1E`, laranja `#E76F3C`, turquesa `#2CB7A0`, creme `#F6E9D7`, menta `#D6F0EA` e verde profundo `#0F6B63`. Fontes locais DM Sans e DM Serif Display, com licenças OFL incluídas. Ícones Lucide, licença ISC. Os três mascotes fornecidos foram preservados no arquivo `public/media/perfis.png`; o CSS seleciona cada um sem redesenhar a arte.
+
+Preferências de texto ampliado, contraste reforçado, redução de movimento e texto de apoio. Navegação por teclado, link de pular conteúdo, foco em mudanças de tela, diálogo com foco contido e fechamento por Escape, rótulos de formulários e estado dos controles.
+
+## Escopo da demonstração
+
+Não há backend, autenticação real, mensagens entre usuários ou upload de arquivos. Dados pessoais opcionais, progresso, favoritos, atividades e publicações ficam no armazenamento local do navegador. Os participantes, indicadores, turmas e eventos são fictícios. O formulário de suporte não envia mensagens.
+
+As aulas apresentam conceitos introdutórios e uma prática guiada em texto. As imagens são ilustrativas; não são vídeos ou instruções validadas de sinais em Libras. Canais de áudio/vídeo são identificados como previstos para a versão conectada. Conquistas são registros da demonstração e não certificados profissionais.
+
+Os arquivos da versão anterior permanecem recuperáveis no histórico Git. Esta versão substitui a implementação antiga na branch principal.
