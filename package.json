@@ -1,1 +1,7 @@
-{"name":"sinalisv2","version":"1.0.0","private":true,"description":"Protótipo Sinalis com React e TypeScript","scripts":{"build":"tsc -p tsconfig.json","dev":"python3 -m http.server 5173"},"devDependencies":{"typescript":"^5.9.3"},"license":"UNLICENSED"}
+{
+ "name": "sinalis-v2-demo", "version": "2.0.0", "private": true,
+ "description": "Demo funcional do Sinalis em React e TypeScript, sem login nem backend",
+ "scripts": {"build":"tsc -p tsconfig.json", "dev":"npm run build && python3 -m http.server 5173", "check":"tsc --noEmit -p tsconfig.json"},
+ "devDependencies":{"typescript":"^5.9.3"},
+ "license":"UNLICENSED"
+}

@@ -1,33 +1,60 @@
-# Sinalis V2 — protótipo navegável
+# Sinalis V2 — produto demonstrativo em React + TypeScript
 
-Protótipo interativo fiel às **30 telas do fluxo iPhone 14** fornecidas pela equipe Sinalis. Implementado em **React 18 e TypeScript**, utilizando as imagens originais otimizadas para WebP e regiões de clique acessíveis.
+Esta versão é uma aplicação navegável de verdade, não uma colagem de telas nem áreas clicáveis por coordenada. Inspirada nas 30 referências do fluxo iPhone 14 fornecido pela equipe, usa componentes HTML/CSS reais, React e TypeScript.
 
-## Visualizar / executar localmente
+## O que funciona
 
-A versão compilada não precisa instalar pacotes. Abra um servidor HTTP nesta pasta:
+- Iniciar a demonstração **sem cadastro, senha ou login**, escolhendo o perfil Pessoa surda, Pessoa ouvinte ou Educador(a).
+- Menus, trilhas, aulas, atividades de múltipla escolha e feedback imediato.
+- Conclusão de aulas, barras de progresso e histórico local.
+- Vocabulário com busca/filtros e favoritos.
+- Comunidade de demonstração com publicações, curtidas e respostas.
+- Chat demonstrativo de texto (sem outro participante).
+- Educador: criação e publicação local de atividades, relatório ilustrativo de turmas e biblioteca com filtros.
+- Preferências de acessibilidade: fonte maior, alto contraste, movimento reduzido, transcrições.
+- Notificações, FAQ, preferências e limpeza de dados da demo.
+- Layout responsivo, mobile-first (incluindo iPhone 14) e desktop com barra lateral.
+
+## Limitações informadas na interface
+
+A aplicação **não tem backend, contas, senhas ou serviços externos**. Todas as modificações são guardadas em `localStorage` do navegador. Fotos são elementos de ilustração. Vídeos de Libras, gravação de áudio/vídeo, upload, relatórios reais e conteúdo pedagógico validado não são simulados como se estivessem funcionando: a interface informa expressamente quando são conteúdos ilustrativos. Os usuários e métricas de turmas são fictícios.
+
+## Estrutura
+
+- `src/app.tsx`: componentes e lógica React + TypeScript.
+- `src/react-shim.d.ts`: definições mínimas para TypeScript usar UMD React.
+- `styles.css`: interface responsiva.
+- `index.html`: entrada do site.
+- `app.js`: JavaScript compilado do `src/app.tsx`.
+- `assets/`: imagens recortadas das referências fornecidas (não são screenshots de tela completa).
+- `vendor/`: distribuição UMD de React 16 e ReactDOM 16, incluída para GitHub Pages funcionar sem CDNs; licenciada sob MIT.
+- `.nojekyll`: evita processamento Jekyll do site estático.
+
+## Executar
+
+O ZIP está pronto para abrir em um servidor estático local ou enviar ao GitHub Pages, sem npm install.
 
 ```bash
 python3 -m http.server 5173
 ```
 
-Acesse http://localhost:5173. O `index.html` referencia as versões UMD de React e ReactDOM hospedadas no jsDelivr; é preciso conexão à internet para carregá-las.
+Abra `http://localhost:5173/`.
 
-## Editar TypeScript
+Para editar o TypeScript e recompilar:
 
-Edite `app.tsx` e execute `npm install && npm run build` para atualizar `app.js`. O layout e as áreas clicáveis ficam no código TypeScript. As imagens ficam em `screens/` (390×844 pontos, exportadas em 780×1688 px).
+```bash
+npm install
+npm run build
+```
 
-## GitHub Pages
+Ou execute `tsc -p tsconfig.json` caso tenha TypeScript instalado globalmente.
 
-O repositório tem `index.html`, `app.js`, `style.css` e `screens/*.webp` **na raiz**. Em **Settings → Pages → Build and deployment → Deploy from a branch**, escolha **main** e **/(root)** para publicar em `https://mgpl-source.github.io/sinalisv2/`. Não é necessária etapa de build no GitHub.
+### GitHub Pages
 
-## Fluxos funcionais
+No repositório `mgpl-source/sinalisv2`, use **Settings → Pages → Deploy from a branch → main / (root)**. O endereço esperado é <https://mgpl-source.github.io/sinalisv2/>.
 
-- Acesso: boas-vindas, cadastro demonstrativo, entrada, escolha de perfil.
-- Pessoa surda: trilhas, aulas, quiz, vocabulário, progresso, comunicação, carreira, qualificação e cultura.
-- Pessoa ouvinte: início, Libras, inclusão e comunidade.
-- Educador: turmas, atividades, acompanhamento, biblioteca e comunidade docente.
-- Conta: perfil, configurações, notificações, suporte, segurança, termos e saída.
+A aplicação usa caminhos relativos em todos os arquivos, compatíveis com o subdiretório `/sinalisv2/`.
 
-**Este é somente um protótipo:** não há autenticação real, armazenamento de dados, backend, envio de mensagens ou reprodução de vídeo. Os vídeos e as publicações representados nas telas são mockups. O menu lateral permite visitar todas as telas e a opção “Exibir áreas clicáveis” ajuda a inspecionar as interações.
+## Créditos e imagens
 
-A autoria das telas e elementos visuais pertence à equipe do projeto Sinalis.
+As fotografias e a arte do mascote foram recortadas a partir do fluxo visual fornecido pela equipe Sinalis. Os arquivos de React e ReactDOM distribuídos em `vendor/` são software de terceiros, sob licença MIT. O código da demo não exige servidores nem dados pessoais.
